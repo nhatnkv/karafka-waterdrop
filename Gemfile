@@ -60,3 +60,5 @@ gem 'karafka', '>= 1.3.0'
 gem "redis", "~> 4.6"
 
 gem "sidekiq", "~> 6.4"
+
+gem "karafka-sidekiq-backend", "~> 1.4"
