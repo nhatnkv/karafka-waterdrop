@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        ProductsResponder.call(@product)
+        WaterDrop::SyncProducer.call(@product.id, topic: 'products_consumer')
         format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
       else
