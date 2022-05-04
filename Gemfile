@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Karafka
 gem 'karafka', '>= 1.3.0'
+gem "redis", "~> 4.6"

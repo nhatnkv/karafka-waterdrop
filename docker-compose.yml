@@ -27,3 +27,9 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
+  redis:
+    image: redis:alpine
+    volumes:
+      - ./_vol/karafka_waterdrop/redis:/data
+    ports:
+      - 6379:6379
