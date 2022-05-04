@@ -19,7 +19,7 @@ class KarafkaApp < Karafka::App
     config.kafka.seed_brokers = %w[kafka://127.0.0.1:9092]
     config.client_id = 'karafka_waterdrop'
     config.logger = Rails.logger
-    config.backend = :inline
+    config.backend = :sidekiq
     config.batch_consuming = false
   end
 
