@@ -21,11 +21,10 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.new(product_params.merge({ action: :creating }))
 
     respond_to do |format|
       if @product.save
-        WaterDrop::SyncProducer.call(@product.id, topic: 'products_consumer')
         format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
       else
@@ -38,7 +37,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1 or /products/1.json
   def update
     respond_to do |format|
-      if @product.update(product_params)
+      if @product.update(product_params.merge({ action: :updating }))
         format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else
